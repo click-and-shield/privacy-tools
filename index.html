@@ -21,11 +21,11 @@
                 <p class="text-center text-muted">Select a tool:</p>
                 <div class="list-group">
                     <a href="web/encrypt.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        Encryption (FC)
+                        Encryption (AES-256 - GCM mode - PBKDF2/SHA-256 key derivation and IV)
                         <span class="badge bg-primary rounded-pill">→</span>
                     </a>
                     <a href="web/decrypt.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        Decryption (FD)
+                        Decryption
                         <span class="badge bg-primary rounded-pill">→</span>
                     </a>
                     <a href="web/secrets.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -41,9 +41,16 @@
                         <span class="badge bg-info rounded-pill">→</span>
                     </a>
                 </div>
+                <div class="mt-4">
+                    <p class="small text-muted mb-2">These tools use the following libraries:</p>
+                    <ul class="small text-muted mb-0">
+                        <li><a href="https://github.com/Digital-Defiance/secrets-ts" target="_blank">secrets-ts</a></li>
+                        <li><a href="https://github.com/nayuki/QR-Code-generator" target="_blank">QR-Code-generator</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="card-footer text-center text-muted">
-                Source: <a href="https://github.com/click-and-shield/privacy-forge">https://github.com/click-and-shield/privacy-forge</a>
+                Source: <a href="https://github.com/click-and-shield/privacy-forge" target="_blank">https://github.com/click-and-shield/privacy-forge</a>
             </div>
         </div>
     </div>

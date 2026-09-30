@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shamir's Secret Sharing</title>
+    <title>AES-GCM Encryption</title>
     <link href="bootstrap-5.3.3.min.css" rel="stylesheet" >
     <style>
         body { background-color: #f8f9fa; }
@@ -15,59 +15,40 @@
             display: block; 
             margin: 0 auto;
         }
-        #sharesList li { 
-            background-color: #fff; 
-            border: 1px solid #dee2e6; 
-            border-radius: 4px; 
-            padding: 10px; 
-            margin-bottom: 10px; 
-            font-family: monospace; 
-            word-break: break-all;
-            list-style-type: none;
-        }
-        .custom-header {
-            background-color: #198754;
-        }
     </style>
-  <script defer src="../assets/secrets.js"></script>
+  <script defer src="../assets/crypt.js"></script>
 
 
 </head>
 <body>
 <div class="container">
     <div class="card">
-        <div class="card-header custom-header text-white">
-            <h1 class="h4 mb-0">Shamir's Secret Sharing</h1>
+        <div class="card-header bg-dark text-white">
+            <h1 class="h4 mb-0">Encrypt / Decrypt text</h1>
         </div>
         <div class="card-body">
             <div class="mb-3">
-                <label for="FSK" class="form-label font-weight-bold">Secret (S):</label>
-                <textarea id="FSK" class="form-control" rows="4" placeholder="Enter your secret here..."></textarea>
+                <label for="plainText" class="form-label">Text:</label>
+                <textarea id="plainText" class="form-control" rows="4">Secret message</textarea>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="SSS" class="form-label">Number of shared keys:</label>
-                    <input id="SSS" class="form-control" type="number" value="5" min="2" />
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="SSN" class="form-label">Minimum number of keys needed:</label>
-                    <input id="SSN" class="form-control" type="number" value="3" min="2" />
-                </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input id="password" class="form-control" type="password" />
             </div>
 
-            <div class="d-grid gap-2">
-                <button id="BG" class="btn btn-primary">Generate</button>
+            <div class="d-flex gap-2 mb-4">
+                <button id="encryptButton" class="btn btn-primary flex-grow-1">Encrypt</button>
+                <button id="decryptButton" class="btn btn-secondary flex-grow-1">Decrypt</button>
             </div>
 
-            <div id="error" class="text-danger mt-3" style="min-height: 24px;"></div>
+            <div class="mb-3">
+                <label for="encryptedText" class="form-label">Encrypted text:</label>
+                <textarea id="encryptedText" class="form-control font-monospace" rows="4"></textarea>
+            </div>
 
-            <hr>
-
-            <h2 class="h5">Generated shared keys:</h2>
-            <div id="output">
-                <ul id="sharesList" class="ps-0"></ul>
+            <div class="mb-3">
+                <button id="BQR" class="btn btn-info w-100" disabled>Generate a QR code</button>
             </div>
 
             <div id="qrcode-container" class="text-center mb-4" style="display: none;">
@@ -129,9 +110,13 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer text-muted text-center">
-            <small><a href="reconstruct.html" class="text-decoration-none">Go to reconstruction page</a></small>
+
+            <div class="mb-3">
+                <label for="decryptedText" class="form-label">Decrypted text:</label>
+                <textarea id="decryptedText" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div id="error" class="text-danger mt-2" style="min-height: 24px;"></div>
         </div>
     </div>
 </div>
